@@ -1935,27 +1935,23 @@ html {
         display: flex !important; 
     }
 
-    .menu {
-        display: none;
+.menu {
+        display: none; /* 預設隱藏 */
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 75%;
+        right: -100%; /* 藏在右邊 */
+        width: 70%;
         height: 100vh;
-        background: rgba(15, 23, 42, 0.98);
-        backdrop-filter: blur(15px);
+        background: rgba(15, 23, 42, 0.95);
         flex-direction: column !important;
-        justify-content: center;
-        align-items: center;
-        gap: 30px !important;
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 10000;
-        transition: transform 0.3s ease-in-out;
+        transition: 0.3s ease;
     }
 
-    .menu.active { 
-      display: flex;
-    } 
+    .menu.active {
+        display: flex !important; 
+        right: 0;
+    }
+}
 
     /* 2. 修正 Hero 區塊圖片與文字重疊 */
     .hero {
