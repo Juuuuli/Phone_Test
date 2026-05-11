@@ -1907,3 +1907,59 @@ html {
     opacity: 1; /* 滑鼠移入時浮現 */
     transform: translateY(0);
 }
+
+/* style.css 手機版專精優化 */
+@media screen and (max-width: 768px) {
+    /* 1. 漢堡選單邏輯 */
+    .hamburger {
+        display: flex; /* 顯示漢堡 */
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* 平時藏在右邊 */
+        width: 75%;
+        height: 100vh;
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(15px);
+        flex-direction: column !important;
+        justify-content: center;
+        gap: 30px !important;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1050;
+    }
+
+    .menu.active { right: 0; } /* 點擊後滑入 */
+
+    /* 2. 修正 Hero 區塊圖片與文字重疊 */
+    .hero {
+        padding-top: 120px !important;
+    }
+
+    .hero-right h1 {
+        font-size: 2.2rem !important; /* 防止名字佔滿螢幕 */
+    }
+
+    /* 3. 解決 iPhone 上的彈窗擁擠 */
+    .modal-content {
+        width: 94% !important;
+        padding: 15px !important;
+    }
+
+    /* 讓彈窗圖片由並排改為上下排，防止被切掉 */
+    .modal-visual-group {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .img-wrapper {
+        width: 100% !important;
+    }
+
+    /* 4. 解決「一點長才」卡片翻轉在手機上的誤觸 */
+    .card-inner {
+        /* 手機上可以考慮取消翻轉，直接顯示內容，或縮短翻轉時間 */
+        transition: transform 0.4s;
+    }
+}
