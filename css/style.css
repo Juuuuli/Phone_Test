@@ -1908,29 +1908,54 @@ html {
     transform: translateY(0);
 }
 
-/* style.css 手機版專精優化 */
+/* 預設隱藏漢堡選單 */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10001; /* 確保在最上層 */
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: #ffffff; /* 確保是白色，才看得到 */
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
 @media screen and (max-width: 768px) {
-    /* 1. 漢堡選單邏輯 */
     .hamburger {
-        display: flex; /* 顯示漢堡 */
+        display: flex !important; 
     }
 
     .menu {
+        display: none;
         position: fixed;
         top: 0;
-        right: -100%; /* 平時藏在右邊 */
+        right: -100%;
         width: 75%;
         height: 100vh;
         background: rgba(15, 23, 42, 0.98);
         backdrop-filter: blur(15px);
         flex-direction: column !important;
         justify-content: center;
+        align-items: center;
         gap: 30px !important;
         transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1050;
+        z-index: 10000;
+        transition: transform 0.3s ease-in-out;
     }
 
-    .menu.active { right: 0; } /* 點擊後滑入 */
+    .menu.active { 
+      display: flex;
+    } 
 
     /* 2. 修正 Hero 區塊圖片與文字重疊 */
     .hero {
