@@ -21,19 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('navMenu');
     const menuLinks = document.querySelectorAll('.menu a');
 
-    // 點擊漢堡按鈕開關選單
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // 點擊選單項目後，自動關閉選單 (方便跳轉)
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // 讓漢堡按鈕也有點擊動畫（可選）
+            hamburger.classList.toggle('open');
         });
-    });
+    }
 });
 
 
