@@ -1911,6 +1911,7 @@ html {
 /* 預設隱藏漢堡選單 */
 .hamburger {
     display: none;
+    position: relative;
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
@@ -1936,20 +1937,31 @@ html {
     }
 
 .menu {
-        display: none; /* 預設隱藏 */
-        position: fixed;
+        display: none; 
+        position: fixed; /* 確保相對於螢幕定位 */
         top: 0;
-        right: -100%; /* 藏在右邊 */
+        right: -100%; 
         width: 70%;
         height: 100vh;
-        background: rgba(15, 23, 42, 0.95);
+        background: rgba(15, 23, 42, 0.98); /* 稍微調深一點，避免背景干擾 */
+        backdrop-filter: blur(15px); /* 增加磨砂玻璃感 */
         flex-direction: column !important;
-        transition: 0.3s ease;
+        justify-content: center; /* 讓選單文字垂直置中 */
+        align-items: center;
+        gap: 30px !important;
+        z-index: 10000; /* 必須小於 .hamburger 的 z-index，但高於其他 section */
+        transition: right 0.4s ease; /* 針對 right 屬性做動畫 */
     }
 
     .menu.active {
         display: flex !important; 
         right: 0;
+    }
+  .menu a {
+        font-size: 1.2rem; /* 手機版文字加大，方便手指點擊 */
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
     }
 }
 
